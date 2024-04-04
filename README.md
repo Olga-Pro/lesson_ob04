@@ -1,2 +1,4 @@
-# lesson_ob04
+## lesson_ob04
+# ООП
+# SOLID
  
