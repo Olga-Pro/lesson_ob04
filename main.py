@@ -35,3 +35,71 @@
 ## Боец выбирает лук.
 ## Боец наносит удар из лука.
 ## Монстр побежден!
+
+from abc import ABC, abstractmethod
+class Weapon(ABC):
+    # абстрактрый класс для оружия
+    @abstractmethod
+    def attack(self):
+        pass
+
+    def get_type(self):
+        pass
+
+class Sword(Weapon):
+    # меч
+    def attack(self):
+        print("наносит удар мечом")
+        return 20
+
+    def get_type(self):
+        return "меч"
+
+class Bow(Weapon):
+    # лук
+    def attack(self):
+        print("стреляет из лука")
+        return 10
+
+    def get_type(self):
+        return "лук"
+
+class Fighter():
+    def __init__(self, name, weapon: Weapon):
+        self.name = name
+        self.weapon = weapon
+        print(f"Новый боец {self.name} с оружием {weapon.get_type()}")
+
+
+    def changeWeapon(self, new_weapon):
+        self.weapon = new_weapon
+        print(f"{self.name} выбирает {new_weapon.get_type()}")
+
+    def attack(self):
+        print(f"{self.name} атакует:")
+        return self.weapon.attack()
+
+class Monster():
+    def __init__(self, health):
+        self.health = health
+
+    def attack(self):
+        print("Монстр нападает!")
+
+def battle(fighter, monster):
+    print("Битва!")
+    monster.attack()
+    while monster.health > 0:
+        counter = f01.attack()
+        monster.health -= counter
+        if monster.health == 40:
+            f01.changeWeapon(Bow())
+
+    if monster.health <= 0:
+        print(f"Монстр побежден!")
+
+
+f01 = Fighter("Добрыня", Sword())
+m01 = Monster(100)
+
+battle(f01, m01)
