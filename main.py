@@ -90,10 +90,10 @@ def battle(fighter, monster):
     print("Битва!")
     monster.attack()
     while monster.health > 0:
-        counter = f01.attack()
+        counter = fighter.attack()
         monster.health -= counter
         if monster.health == 40:
-            f01.changeWeapon(Bow())
+            fighter.changeWeapon(Bow())
 
     if monster.health <= 0:
         print(f"Монстр побежден!")
